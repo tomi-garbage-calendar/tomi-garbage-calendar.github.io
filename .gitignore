@@ -9,6 +9,7 @@
 !/.github/
 !/.github/workflows/
 !/.github/workflows/check-calendars.yml
+!/.github/workflows/approve-calendar.yml
 !/.github/workflows/pages.yml
 
 !/scripts/

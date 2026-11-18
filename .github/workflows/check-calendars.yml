@@ -2,11 +2,12 @@ name: 公式ごみ収集カレンダーの更新確認
 
 on:
   schedule:
-    - cron: '23 21 * * *' # 06:23 JST
+    - cron: '23 0 1 * *' # 毎月1日 09:23 JST
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: tomi-calendar-check
@@ -41,8 +42,40 @@ jobs:
         run: |
           if test -f .work/review/summary.md; then cat .work/review/summary.md >> "$GITHUB_STEP_SUMMARY"; fi
       - uses: actions/upload-artifact@v4
+        id: review
         if: ${{ !cancelled() }}
         with:
           name: calendar-review
           path: .work/review/
-          retention-days: 30
+          retention-days: 90
+      - name: Open review issues
+        if: github.ref == 'refs/heads/main' && steps.review.outputs.artifact-id != ''
+        uses: actions/github-script@v7
+        env:
+          REVIEW_URL: ${{ steps.review.outputs.artifact-url }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const { owner, repo } = context.repo;
+            const files = fs.readdirSync('.work/review').filter(file => /^[0-9]{4}-candidate\.json$/.test(file));
+            if (!files.length) return;
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open' });
+            for (const file of files) {
+              const year = file.slice(0, 4);
+              const sha = require('node:crypto').createHash('sha256')
+                .update(fs.readFileSync(`.work/review/${file}`)).digest('hex');
+              const marker = `<!-- calendar-review ${year} ${context.runId} ${sha} -->`;
+              const duplicate = open.some(issue => issue.user?.login === 'github-actions[bot]'
+                && issue.body?.includes(` ${sha} -->`)
+                && Date.now() - Date.parse(issue.created_at) < 75 * 86400000);
+              if (duplicate) continue;
+              await github.rest.issues.create({
+                owner, repo, title: `${year}年度 ごみ収集カレンダーの確認`,
+                body: [
+                  marker,
+                  `[確認用成果物をダウンロード](${process.env.REVIEW_URL})し、${year}-report.html を公式PDFと照合してください。`,
+                  '',
+                  '内容を承認する場合は、このIssueに `/approve` とだけコメントしてください。',
+                ].join('\n'),
+              });
+            }

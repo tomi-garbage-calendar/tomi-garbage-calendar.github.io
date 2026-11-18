@@ -1,0 +1,88 @@
+name: Issueで確認したカレンダーを登録
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  actions: write
+  contents: write
+  issues: write
+
+concurrency:
+  group: tomi-calendar-approval
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    if: github.event.comment.body == '/approve' && !github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        id: review
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { issue, comment } = context.payload;
+            if (issue.user?.login !== 'github-actions[bot]' || issue.state !== 'open') {
+              core.setFailed('更新確認で作成された未解決のレビューIssueを使用してください。');
+              return;
+            }
+            const { data: access } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner, repo, username: comment.user.login,
+            });
+            if (!['admin', 'write'].includes(access.permission)) {
+              core.setFailed('この操作にはリポジトリへの書き込み権限が必要です。');
+              return;
+            }
+            const match = /^<!-- calendar-review ([0-9]{4}) ([0-9]+) ([a-f0-9]{64}) -->$/m.exec(issue.body ?? '');
+            if (!match) {
+              core.setFailed('レビューIssueに候補の情報がありません。');
+              return;
+            }
+            const [, year, runId, sha] = match;
+            const { data: workflow } = await github.rest.actions.getWorkflow({
+              owner, repo, workflow_id: 'check-calendars.yml',
+            });
+            const { data: run } = await github.rest.actions.getWorkflowRun({ owner, repo, run_id: runId });
+            if (run.workflow_id !== workflow.id || run.head_branch !== 'main'
+                || run.head_repository?.full_name !== `${owner}/${repo}` || run.conclusion !== 'success') {
+              core.setFailed('mainの更新確認で成功した実行を確認できません。');
+              return;
+            }
+            core.setOutput('year', year);
+            core.setOutput('run_id', runId);
+            core.setOutput('sha', sha);
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Register reviewed JSON
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ steps.review.outputs.run_id }}
+          YEAR: ${{ steps.review.outputs.year }}
+          SHA: ${{ steps.review.outputs.sha }}
+        run: |
+          gh run download "$RUN_ID" --name calendar-review --dir .work/issue-review
+          python scripts/pipeline.py approve ".work/issue-review/$YEAR-candidate.json" "$SHA"
+          git add -- "data/approved/$YEAR.json"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Approve fiscal year $YEAR calendar (#${{ github.event.issue.number }})"
+            git push origin HEAD:main
+          fi
+          gh workflow run pages.yml --ref main
+      - name: Close approved issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = { ...context.repo, issue_number: context.issue.number };
+            const actions = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/workflows/pages.yml`;
+            await github.rest.issues.createComment({
+              ...issue, body: `確認済みJSONを登録し、[Pagesの公開処理](${actions})を開始しました。`,
+            });
+            await github.rest.issues.update({ ...issue, state: 'closed', state_reason: 'completed' });

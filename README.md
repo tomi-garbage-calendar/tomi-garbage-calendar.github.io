@@ -10,19 +10,23 @@ This project is neither operated nor endorsed by the City of Tomi.
 
 ## 公式PDFの更新確認と公開
 
-一次情報源は[東御市の市民カレンダー掲載ページ](https://www.city.tomi.nagano.jp/category/gomi/150910.html)です。GitHub Actions は毎日 06:23（日本時間）を目安に、掲載中の各年度のPDFを取得します。確認済みデータの出典と SHA-256 が一致する年度は解析を省略します。確認待ちのPDFも、同じ抽出コードとハッシュの解析結果が Actions キャッシュにあれば再利用します。
+一次情報源は[東御市の市民カレンダー掲載ページ](https://www.city.tomi.nagano.jp/category/gomi/150910.html)です。GitHub Actions は毎月1日 09:23（日本時間）を目安に、掲載中の各年度のPDFを確認します。必要なときは手動でも実行できます。確認済みデータの出典と SHA-256 が一致する年度は解析を省略します。確認待ちのPDFも、同じ抽出コードとハッシュの解析結果が Actions キャッシュにあれば再利用します。
 
 ### 確認から公開まで
 
-1. 更新確認ワークフローの実行結果から `calendar-review` を取得します。年度別の `*-report.html` で追加・削除と警告を確認し、公式PDFと照合します。 `*-report.json` には PDFページ番号、日付欄の座標、抽出テキスト、画像識別子、図形数、利用時のOCR結果があります。
-2. `*-candidate.json` がある場合は、確認後にワークフローのサマリーに記載された SHA-256 を指定して次を実行します。取得時から公式PDFが更新されていれば登録は失敗します。
+1. 新しい確認候補があると、更新確認ワークフローがレビュー用Issueを作成します。Issueのリンクから `calendar-review` を取得し、`*-report.html` の追加・削除を公式PDFと照合します。
+2. 承認する場合は、リポジトリへの書き込み権限を持つアカウントで、そのIssueに **`/approve`** とだけコメントします。Actionsが候補と現在の公式PDFのハッシュを検証し、`data/approved/<年度>.json` を `main` に登録してPagesの公開を開始します。
+
+初回はリポジトリで **Issues** を有効にし、 **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定します。`main` への直接書き込みをルールで禁止している場合は、下記の手動登録とPRを使用します。取得・解析・検証の失敗時や未確認の更新が残っている間は、既存の公開サイトが引き続き配信されます。 [GitHub Pages のカスタムワークフロー](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+
+### 手動で登録する場合
+
+候補を確認後、ワークフローのサマリーに記載された SHA-256 を指定します。生成された確認済みJSONをPRで `main` にマージします。
 
    ```sh
    python -m pip install -r requirements.txt
    python scripts/pipeline.py approve 2026-candidate.json <候補ファイルのSHA-256>
    ```
-
-3. 生成された `data/approved/2026.json` をコミットし、PRで確認して `main` にマージします。初回のみリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定します。PRではビルドを検証し、`main` へのマージ後、掲載中の全PDFのハッシュを確認済みデータと照合してからデプロイします。取得・解析・検証の失敗時や未確認の更新が残っている間は、既存の公開サイトが引き続き配信されます。 [GitHub Pages のカスタムワークフロー](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
 確認済みのJSONは年度ごとに保持します。公式ページから掲載が終了した年度もサイトと地区別ICSに含まれます。1〜3月は翌年の暦日として扱います。ICSは全年度を含む終日予定で、地区・日付・品目ごとに安定したUIDを付けています。
 
