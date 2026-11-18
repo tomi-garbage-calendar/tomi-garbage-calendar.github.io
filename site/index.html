@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>東御市ごみ出しカレンダー</title>
+  <link rel="stylesheet" href="calendar.css">
+  <script type="module" src="calendar.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1 data-text="title">東御市ごみ出しカレンダー</h1>
+    </header>
+    <section class="district-picker">
+      <label for="district" data-text="district">お住まいの地区</label>
+      <select id="district" disabled>
+        <option value="" data-text="choose">地区を選択してください</option>
+      </select>
+    </section>
+    <div class="day-picker" role="group" aria-label="確認する日">
+      <button type="button" data-day="0" data-text="today" aria-pressed="true">今日</button>
+      <button type="button" data-day="1" data-text="tomorrow" aria-pressed="false">明日</button>
+      <button type="button" data-day="2" data-text="dayAfter" aria-pressed="false">明後日</button>
+    </div>
+    <section class="result" aria-live="polite" aria-atomic="true">
+      <h2><time id="date"></time></h2>
+      <p id="status" data-text="loading">読み込み中…</p>
+      <ul id="items" hidden></ul>
+    </section>
+    <button type="button" id="retry" data-text="retry" hidden>もう一度読み込む</button>
+    <nav id="district-links" aria-label="地区のカレンダー" hidden>
+      <a id="calendar-link" data-text="fullCalendar">年間の収集予定</a>
+      <a id="ics-link" data-text="ics">ICSで購読</a>
+    </nav>
+    <noscript>収集予定を表示するにはJavaScriptを有効にしてください。</noscript>
+  </main>
+  <footer>
+    <p data-text="unofficial">このサイトは東御市の非公式サイトです。</p>
+    <a href="https://www.city.tomi.nagano.jp/category/gomi/150910.html" data-text="official">東御市公式カレンダー</a>
+  </footer>
+</body>
+</html>

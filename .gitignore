@@ -1,0 +1,28 @@
+# Ignore everything except the files listed below.
+*
+
+!/.gitignore
+!/LICENSE
+!/README.md
+!/requirements.txt
+
+!/.github/
+!/.github/workflows/
+!/.github/workflows/check-calendars.yml
+!/.github/workflows/pages.yml
+
+!/scripts/
+!/scripts/build.py
+!/scripts/extract.py
+!/scripts/generate_ics.py
+!/scripts/pipeline.py
+
+!/site/
+!/site/calendar.css
+!/site/calendar.js
+!/site/index.html
+
+# Approved fiscal-year data is versioned. Candidates and build output are ignored.
+!/data/
+!/data/approved/
+!/data/approved/[0-9][0-9][0-9][0-9].json

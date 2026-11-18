@@ -1,0 +1,48 @@
+name: 公式ごみ収集カレンダーの更新確認
+
+on:
+  schedule:
+    - cron: '23 21 * * *' # 06:23 JST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tomi-calendar-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr-jpn
+      - uses: actions/cache/restore@v4
+        id: extraction-cache
+        with:
+          path: .work/results
+          key: tomi-extraction-${{ runner.os }}-restore-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: tomi-extraction-${{ runner.os }}-
+      - run: python scripts/pipeline.py check
+      - uses: actions/cache/save@v4
+        if: ${{ !cancelled() && hashFiles('.work/results/*.json') != '' && steps.extraction-cache.outputs.cache-matched-key != format('tomi-extraction-{0}-{1}', runner.os, hashFiles('.work/results/*.json')) }}
+        with:
+          path: .work/results
+          key: tomi-extraction-${{ runner.os }}-${{ hashFiles('.work/results/*.json') }}
+      - name: Show review status
+        if: ${{ !cancelled() }}
+        run: |
+          if test -f .work/review/summary.md; then cat .work/review/summary.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: calendar-review
+          path: .work/review/
+          retention-days: 30
