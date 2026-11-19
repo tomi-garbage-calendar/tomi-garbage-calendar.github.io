@@ -1,0 +1,19 @@
+{
+  "もやせるごみ": "burnable",
+  "生ごみ": "food",
+  "容器包装プラ": "packaging",
+  "容器包装以外プラ": "plastic-products",
+  "汚れ容器包装プラ": "soiled-packaging",
+  "びん": "glass",
+  "茶色びん": "brown-glass",
+  "無色びん": "clear-glass",
+  "透明びん": "clear-glass",
+  "他色びん": "colored-glass",
+  "その他びん": "colored-glass",
+  "カン": "can",
+  "ペットボトル": "pet-bottle",
+  "紙類・衣類": "paper-clothes",
+  "金物・陶器等": "metal-ceramics",
+  "クリーンセンター休日受入": "clean-center",
+  "クリーンセンター": "clean-center"
+}

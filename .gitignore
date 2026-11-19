@@ -4,6 +4,7 @@
 !/.gitignore
 !/LICENSE
 !/README.md
+!/collection-icons-missing.md
 !/requirements.txt
 
 !/.github/
@@ -21,6 +22,8 @@
 !/site/
 !/site/calendar.css
 !/site/calendar.js
+!/site/collection-icons.json
+!/site/collection-icons.svg
 !/site/index.html
 
 # Approved fiscal-year data is versioned. Candidates and build output are ignored.

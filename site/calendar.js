@@ -32,6 +32,7 @@ const retry = document.querySelector("#retry");
 const links = document.querySelector("#district-links");
 const dayPicker = document.querySelector(".day-picker");
 const storageKey = "tomi-garbage-calendar.district";
+const svgNamespace = "http://www.w3.org/2000/svg";
 const tokyoDate = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Tokyo", calendar: "gregory", numberingSystem: "latn",
   year: "numeric", month: "2-digit", day: "2-digit",
@@ -46,10 +47,12 @@ let renderVersion = 0;
 let displayedToday;
 const calendars = new Map();
 
-for (const element of document.querySelectorAll("[data-text]")) {
-  element.textContent = text[element.dataset.text];
+if (document.documentElement.lang !== "ja") {
+  for (const element of document.querySelectorAll("[data-text]")) {
+    element.textContent = text[element.dataset.text];
+  }
+  document.title = text.title;
 }
-document.title = text.title;
 dayPicker.setAttribute("aria-label", text.dayPicker);
 links.setAttribute("aria-label", text.districtLinks);
 
@@ -115,7 +118,19 @@ async function render() {
     const events = calendar.events.filter((event) => event.district === area && event.date === day);
     for (const event of events) {
       const item = document.createElement("li");
-      item.textContent = event.item;
+      const iconId = manifest.itemIcons?.[event.item];
+      if (typeof iconId === "string") {
+        const icon = document.createElementNS(svgNamespace, "svg");
+        icon.classList.add("collection-icon");
+        icon.setAttribute("aria-hidden", "true");
+        const drawing = document.createElementNS(svgNamespace, "use");
+        drawing.setAttribute("href", `collection-icons.svg#${iconId}`);
+        icon.append(drawing);
+        item.append(icon);
+      }
+      const label = document.createElement("span");
+      label.textContent = event.item;
+      item.append(label);
       items.append(item);
     }
     items.hidden = events.length === 0;

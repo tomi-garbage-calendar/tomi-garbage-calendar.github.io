@@ -1,4 +1,5 @@
 import argparse
+import json
 from collections import defaultdict
 from datetime import date
 from html import escape
@@ -20,6 +21,9 @@ nav ul,.districts{display:flex;flex-wrap:wrap;gap:.65rem;padding:0;list-style:no
 table{width:100%;border-collapse:collapse;background:white}
 th,td{padding:.55rem .65rem;text-align:left;border-bottom:1px solid #dfe8df;vertical-align:top}
 th[scope=row]{white-space:nowrap;width:6rem}
+.collection-item{display:inline-flex;align-items:center;gap:.25rem;vertical-align:middle;max-width:100%}
+.collection-item span{overflow-wrap:anywhere}
+.collection-icon{flex:none;width:1.5rem;height:1.5rem}
 footer{margin-top:3rem;border-top:1px solid #cddacd;padding-top:1rem}
 """
 
@@ -32,7 +36,16 @@ def page(title, content):
             f'<a href="{OFFICIAL}">東御市公式のごみ出しカレンダー</a></footer></body></html>')
 
 
-def district_page(area, years, schedule):
+def collection_item(item, item_icons):
+    icon_id = item_icons.get(item)
+    if not icon_id:
+        return escape(item)
+    return (f'<span class="collection-item"><svg class="collection-icon" aria-hidden="true">'
+            f'<use href="collection-icons.svg#{escape(icon_id)}"></use></svg>'
+            f'<span>{escape(item)}</span></span>')
+
+
+def district_page(area, years, schedule, item_icons):
     title = AREAS[area]
     navigation = "".join(f'<li><a href="#fy-{year}">{year}年度</a></li>' for year in years)
     parts = ['<p><a href="index.html">今日・明日・明後日</a></p>', f"<h1>{escape(title)}</h1>",
@@ -54,8 +67,9 @@ def district_page(area, years, schedule):
             for day, items in sorted(days.items()):
                 when = date.fromisoformat(day)
                 label = f"{when.day}日（{'月火水木金土日'[when.weekday()]}）"
+                item_labels = "、".join(collection_item(item, item_icons) for item in items)
                 parts.append(f'<tr><th scope="row"><time datetime="{day}">{label}</time></th>'
-                             f'<td>{escape("、".join(items))}</td></tr>')
+                             f'<td>{item_labels}</td></tr>')
             parts.append("</tbody></table>")
         parts.append("</section>")
     return page(title, "".join(parts))
@@ -67,6 +81,7 @@ def build(out):
         raise SystemExit("確認済みJSONがないため公開用ファイルを生成できません")
     if out.exists() and any(out.iterdir()):
         raise SystemExit("空の出力先を指定してください")
+    item_icons = json.loads((SITE / "collection-icons.json").read_text(encoding="utf-8"))
     out.mkdir(parents=True, exist_ok=True)
     for year, data in years.items():
         write(out / "data" / f"{year}.json", data)
@@ -75,9 +90,9 @@ def build(out):
         schedule = {year: [(e["date"], e["item"]) for e in data["events"] if e["district"] == area]
                     for year, data in years.items()}
         (out / f"{area}.html").write_text(
-            district_page(area, sorted(years, reverse=True), schedule), encoding="utf-8")
-    write(out / "data" / "index.json", {"districts": AREAS, "years": sorted(years)})
-    for filename in ("index.html", "calendar.css", "calendar.js"):
+            district_page(area, sorted(years, reverse=True), schedule, item_icons), encoding="utf-8")
+    write(out / "data" / "index.json", {"districts": AREAS, "years": sorted(years), "itemIcons": item_icons})
+    for filename in ("index.html", "calendar.css", "calendar.js", "collection-icons.svg"):
         copyfile(SITE / filename, out / filename)
     (out / ".nojekyll").touch()
 

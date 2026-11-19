@@ -4,8 +4,6 @@ from datetime import date
 import re
 import unicodedata
 
-import pymupdf
-
 
 DISTRICTS = {
     "tanaka-shigeno": {
@@ -47,12 +45,16 @@ def normalize(text):
 
 
 def spans(page, textpage=None):
+    import pymupdf
+
     return [span for block in page.get_text("dict", flags=pymupdf.TEXTFLAGS_TEXT,
                                           textpage=textpage)["blocks"]
             for line in block["lines"] for span in line["spans"]]
 
 
 def extract_pdf(path, year, edition):
+    import pymupdf
+
     events = set()
     audit = []
     issues = []
@@ -68,6 +70,8 @@ def extract_pdf(path, year, edition):
 
 
 def extract_page(page, year, edition, index):
+    import pymupdf
+
     if abs(page.rect.width - 1031.81) > 1 or abs(page.rect.height - 1530.71) > 1:
         raise ValueError(f"{index + 1}ページの用紙サイズが未対応です")
     text = spans(page)
@@ -132,6 +136,8 @@ def extract_page(page, year, edition, index):
 
 
 def extract_cell(page, rect, text, images, filled, edition):
+    import pymupdf
+
     districts = DISTRICTS[edition]
     rows = sorted((s for s in text if pymupdf.Point(*s["bbox"][:2]) in rect),
                   key=lambda s: (round(s["bbox"][1] / 3), s["bbox"][0]))
@@ -193,6 +199,9 @@ def extract_cell(page, rect, text, images, filled, edition):
 
 def ocr_cell(page, rect):
     import subprocess
+
+    import pymupdf
+
     try:
         pixmap = page.get_pixmap(matrix=pymupdf.Matrix(4, 4), clip=rect)
         result = subprocess.run(["tesseract", "stdin", "stdout", "-l", "jpn", "--psm", "11"],

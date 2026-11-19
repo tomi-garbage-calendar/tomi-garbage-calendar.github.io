@@ -8,6 +8,17 @@ An unofficial garbage collection calendar for Tomi City, Nagano, Japan. Provides
 **非公式 / Unofficial:** 本プロジェクトは東御市が運営・公認するものではありません。  
 This project is neither operated nor endorsed by the City of Tomi.
 
+## ローカルでプレビューする
+
+リポジトリのルートで確認済みJSONからサイトを生成し、ローカルのHTTPサーバーで開きます。プレビューの生成にはPythonがあれば実行できます。
+
+```sh
+python scripts/build.py dist
+python -m http.server 8000 --bind 127.0.0.1 --directory dist
+```
+
+ブラウザで [http://127.0.0.1:8000/](http://127.0.0.1:8000/) を開き、地区を選択してください。`site/index.html` を直接開くとブラウザがJavaScriptモジュールをブロックします。また、カレンダーが読み込む `data/index.json` と年度別のJSONはビルド時に生成されます。再ビルドする場合は空の出力先を指定してください。
+
 ## 公式PDFの更新確認と公開
 
 一次情報源は[東御市の市民カレンダー掲載ページ](https://www.city.tomi.nagano.jp/category/gomi/150910.html)です。GitHub Actions は毎月1日 09:23（日本時間）を目安に、掲載中の各年度のPDFを確認します。必要なときは手動でも実行できます。確認済みデータの出典と SHA-256 が一致する年度は解析を省略します。確認待ちのPDFも、同じ抽出コードとハッシュの解析結果が Actions キャッシュにあれば再利用します。
