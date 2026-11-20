@@ -5,6 +5,7 @@ from hashlib import sha256
 from pathlib import Path
 
 from pipeline import AREAS, load_approved
+from normalize_items import publication_data
 
 
 def ics_escape(value):
@@ -28,9 +29,9 @@ def fold(line):
 def calendar_file(path, area, events, stamp):
     lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Tomi Garbage Calendar//JA",
              "CALSCALE:GREGORIAN", f"X-WR-CALNAME:{ics_escape(AREAS[area])} ごみ収集"]
-    for day, item in sorted(events):
+    for day, item_id, collection_type, item in sorted(events):
         when = date.fromisoformat(day)
-        uid = sha256(f"{area}|{day}|{item}".encode("utf-8")).hexdigest()
+        uid = sha256(f"{area}|{day}|{item_id}|{collection_type}".encode("utf-8")).hexdigest()
         lines += ["BEGIN:VEVENT", f"UID:{uid}@tomi-garbage-calendar.github.io",
                   f"DTSTAMP:{stamp}", f"DTSTART;VALUE=DATE:{when:%Y%m%d}",
                   f"DTEND;VALUE=DATE:{when + timedelta(days=1):%Y%m%d}",
@@ -45,7 +46,9 @@ def generate(years, out):
     schedules = defaultdict(list)
     for data in years.values():
         for event in data["events"]:
-            schedules[event["district"]].append((event["date"], event["item"]))
+            schedules[event["district"]].append(
+                (event["date"], event["item_id"], event["collection_type"], event["item"])
+            )
     out.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     for area in AREAS:
@@ -55,4 +58,5 @@ def generate(years, out):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="確認済みJSONから地区別ICSを生成")
     parser.add_argument("output", type=Path)
-    generate(load_approved(), parser.parse_args().output)
+    generate({year: publication_data(data) for year, data in load_approved().items()},
+             parser.parse_args().output)

@@ -118,7 +118,7 @@ async function render() {
     const events = calendar.events.filter((event) => event.district === area && event.date === day);
     for (const event of events) {
       const item = document.createElement("li");
-      const iconId = manifest.itemIcons?.[event.item];
+      const iconId = manifest.itemIcons?.[event.item_id] ?? manifest.itemIcons?.[event.item];
       if (typeof iconId === "string") {
         const icon = document.createElementNS(svgNamespace, "svg");
         icon.classList.add("collection-icon");
@@ -130,7 +130,20 @@ async function render() {
       }
       const label = document.createElement("span");
       label.textContent = event.item;
-      item.append(label);
+      const details = document.createElement("div");
+      details.append(label);
+      const locationName = manifest.locationNames?.[event.location_type];
+      if (locationName) {
+        const location = document.createElement("button");
+        location.type = "button";
+        location.className = "collection-location";
+        location.dataset.location = event.location_type;
+        location.dataset.item = event.item;
+        location.setAttribute("aria-haspopup", "dialog");
+        location.textContent = locationName;
+        details.append(location);
+      }
+      item.append(details);
       items.append(item);
     }
     items.hidden = events.length === 0;

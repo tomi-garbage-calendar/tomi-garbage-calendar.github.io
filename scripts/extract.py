@@ -23,8 +23,8 @@ RESOURCE_DISTRICTS = {
 }
 ITEMS = set("""
 もやせるごみ 生ごみ 容器包装プラ 汚れ容器包装プラ 容器包装以外プラ 茶色びん 無色びん
-他色びん びん カン 金物・陶器等 トレー等 紙類・衣類 ペットボトル 有害ごみ
-クリーンセンター休日受入 資源回収（新聞等） 資源回収（ペット等）
+他色びん びん カン 金物・陶器等 トレー等 紙類 衣類 紙類・衣類 ペットボトル 有害ごみ
+クリーンセンター休日受入 資源回収（新聞等） 資源回収（ペット等） 資源回収（びん）
 """.split())
 
 # Digests identify decoded PDF images, independently of the PDF's compression.
@@ -38,6 +38,8 @@ LABELED_ICONS = {
     "331c1e96fe8663e015567338a9602a76": "金物・陶器等",
     "42a6c19d6717490eb3cc3eb725779879": "金物・陶器等",
 }
+KNOWN_FRAGMENTS = {"クリーンセン", "ター休日受入", "ト", "レー等", "蛍光管", "乾電池",
+                   "ライター等", "東御の日"}
 
 
 def normalize(text):
@@ -52,24 +54,19 @@ def spans(page, textpage=None):
             for line in block["lines"] for span in line["spans"]]
 
 
-def extract_pdf(path, year, edition):
+def extract_pdf(path, year):
     import pymupdf
 
-    events = set()
     audit = []
-    issues = []
     with pymupdf.open(path) as document:
         if len(document) != 6:
             raise ValueError("2か月×6ページの版面に対応しています")
         for index, page in enumerate(document):
-            page_info, page_events, page_issues = extract_page(page, year, edition, index)
-            audit.append(page_info)
-            issues.extend(page_issues)
-            events.update(page_events)
-    return events, audit, issues
+            audit.append(extract_page(page, year, index))
+    return audit
 
 
-def extract_page(page, year, edition, index):
+def extract_page(page, year, index):
     import pymupdf
 
     if abs(page.rect.width - 1031.81) > 1 or abs(page.rect.height - 1530.71) > 1:
@@ -84,8 +81,6 @@ def extract_page(page, year, edition, index):
     placed_images = [(pymupdf.Rect(i["bbox"]).tl + (pymupdf.Rect(i["bbox"]).br
                                                  - pymupdf.Rect(i["bbox"]).tl) / 2,
                       i["digest"].hex(), pymupdf.Rect(i["bbox"])) for i in images]
-    events = set()
-    issues = []
     cells = []
     for half, offset in enumerate((0, 710.5)):
         month = (index * 2 + (1 - half) + 3) % 12 + 1
@@ -126,75 +121,36 @@ def extract_page(page, year, edition, index):
                              else offset + 771, (773 if half == 0 else 1484))
                 rect = pymupdf.Rect(left, y - 4, left + 135.6, bottom)
                 iso = date(civil_year, month, day).isoformat()
-                items, evidence, warnings = extract_cell(page, rect, text, placed_images, filled, edition)
-                events.update((area, iso, item) for area, item in items)
-                issues.extend(f"{iso}: {warning}" for warning in warnings)
-                if items or warnings:
-                    cells.append({"date": iso, "bbox": list(rect), **evidence})
+                evidence = extract_cell(page, rect, text, placed_images, filled)
+                cells.append({"date": iso, "bbox": list(rect), **evidence})
     return {"page": index + 1, "drawings": len(drawings), "images": len(images),
-            "cells": sorted(cells, key=lambda cell: cell["date"])}, events, issues
+            "cells": sorted(cells, key=lambda cell: cell["date"])}
 
 
-def extract_cell(page, rect, text, images, filled, edition):
+def extract_cell(page, rect, text, images, filled):
     import pymupdf
 
-    districts = DISTRICTS[edition]
     rows = sorted((s for s in text if pymupdf.Point(*s["bbox"][:2]) in rect),
                   key=lambda s: (round(s["bbox"][1] / 3), s["bbox"][0]))
-    labels = [normalize(s["text"]) for s in rows]
+    labels = {normalize(s["text"]) for s in rows}
+    small_text = [s["text"] for s in rows if s["size"] < 8 and re.search("ShinGo|GothicBBB", s["font"])]
     icons = {digest for center, digest, _ in images if center in rect}
-    items = set(ITEMS.intersection(labels))
-    warnings = []
-    scoped = set()
-    joined = "".join(labels)
     graphics = sum(rect.x0 <= x0 <= x1 <= rect.x1 and rect.y0 <= y0 <= y1 <= rect.y1
                    for x0, y0, x1, y1 in filled)
-    if BURNABLE & icons:
-        items.update(("もやせるごみ", "生ごみ"))
-        if graphics == 0:
-            warnings.append("もやせるごみの絵柄に対応するベクター図形がありません")
     if "クリーンセン" in labels and "ター休日受入" in labels:
-        items.add("クリーンセンター休日受入")
-    missing_labels = {item for digest, item in LABELED_ICONS.items()
-                      if digest in icons and item not in items}
-    if missing_labels:
-        warnings.append(f"絵柄に対応するラベルがありません: {', '.join(sorted(missing_labels))}")
-    if "金物・陶器等" in items and edition == "kitamimaki":
-        area = {area for digest, area in NORTH_ICONS.items() if digest in icons}
-        caption = {key for key, value in districts.items() if normalize(value) in joined}
-        if len(area) != 1 or (caption and area != caption) or not {"ト", "レー等"}.issubset(labels):
-            warnings.append("北御牧の金物・陶器等、トレー等の対象区域を確認できません")
-        else:
-            scoped.update((key, item) for key in area for item in ("金物・陶器等", "トレー等"))
-        items.difference_update(("金物・陶器等", "トレー等"))
-    for label in labels:
-        if not label.startswith("資源回収"):
-            continue
-        match = re.fullmatch(r"資源回収\((新聞|ペット)等\)(田中|滋野|祢津|和)地区", label)
-        targets = districts.keys() & RESOURCE_DISTRICTS[match[2]] if match else set()
-        if targets:
-            scoped.update((key, f"資源回収（{match[1]}等）") for key in targets)
-        else:
-            warnings.append(f"資源回収の表示を確認してください: {label}")
-    # A changed label or unfamiliar small image is review evidence. OCR is advisory.
-    known_fragments = {"クリーンセン", "ター休日受入", "ト", "レー等", "蛍光管", "乾電池",
-                       "ライター等", "東御の日"}
-    unfamiliar = [normalize(s["text"]) for s in rows if s["size"] < 8
-                  and re.search("ShinGo|GothicBBB", s["font"])
-                  and normalize(s["text"]) not in ITEMS | known_fragments]
-    ocr = ""
-    if unfamiliar:
-        warnings.append(f"未対応の小型ラベル: {', '.join(unfamiliar)}")
+        labels.add("クリーンセンター休日受入")
+    missing_labels = any(digest in icons and item not in labels
+                         for digest, item in LABELED_ICONS.items())
+    unfamiliar = any(normalize(value) not in ITEMS | KNOWN_FRAGMENTS for value in small_text)
     unknown_icons = {digest for center, digest, bbox in images if center in rect
                      and 10 <= bbox.width <= 60 and 10 <= bbox.height <= 70
                      and digest not in BURNABLE | NORTH_ICONS.keys() | LABELED_ICONS.keys()}
-    if unknown_icons:
-        warnings.append(f"未対応の絵柄: {', '.join(sorted(unknown_icons))}")
-    if unfamiliar or unknown_icons or missing_labels:
-        ocr = ocr_cell(page, rect)
-    return scoped | {(area, item) for area in districts for item in items}, {
-        "text": labels, "image_digests": sorted(icons), "filled_paths": graphics, "ocr": ocr,
-    }, warnings
+    return {
+        "text": [s["text"] for s in rows], "small_text": small_text,
+        "image_digests": sorted(icons), "unknown_images": sorted(unknown_icons),
+        "filled_paths": graphics,
+        "ocr": ocr_cell(page, rect) if unfamiliar or unknown_icons or missing_labels else "",
+    }
 
 
 def ocr_cell(page, rect):

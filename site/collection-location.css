@@ -1,0 +1,28 @@
+.collection-location {
+  display: block;
+  width: fit-content;
+  min-height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 400;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+  cursor: pointer;
+}
+
+.location-dialog {
+  width: min(26rem, calc(100% - 2rem));
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: .5rem;
+}
+
+.location-dialog h2 { margin: 0; font-size: 1.125rem; }
+.location-dialog form { text-align: right; }
+.location-dialog button { min-height: 2.75rem; padding-inline: .75rem; cursor: pointer; }
+.location-dialog::backdrop { background: rgb(0 0 0 / .5); }

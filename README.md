@@ -55,6 +55,14 @@ python scripts/build.py dist
 
 確認用ファイルは `.work/review/` に生成されます。公開用ビルドは確認済みJSONがある場合に実行でき、空の出力先に地区別ページ、地区別ICS、年度別JSONを生成します。
 
+更新確認では、版ごとの読み取り原文、日付、PDFページ番号、図柄、確認用OCR結果を `*-extraction.json` に保存します。品目名は `scripts/normalize_items.py` の `ITEM_NAMES`、地区指定の資源回収の別名は `RESOURCE_ITEMS` で管理します。収集区分や対象地区が特定できないラベルは、原文とページ・日付を添えて確認レポートに載せます。別名を追加したあと、中間JSONを指定してPDFを再抽出せずに正規化の結果を確認できます。
+
+```sh
+python scripts/pipeline.py normalize 2026-kitamimaki-extraction.json normalized.json
+```
+
+公開用JSONでは、各予定に統一品目の `item_id` と収集区分の `collection_type` を持たせます。翻訳は品目ID単位で管理でき、収集場所の案内には地区と収集区分を組み合わせて使えます。統一名と元の品目の対応は `scripts/normalize_items.py` の `PUBLIC_ITEMS` にあります。WebとICSはこの正規化結果を使い、確認済みJSONには承認時の品目を保持します。ICSの予定IDは地区、日付、品目ID、収集区分から生成します。
+
 ICSだけを生成する場合は `python scripts/generate_ics.py .work/ics` を実行します。公開後は地区別ページと GitHub Actions のデプロイ結果に購読用のHTTPS URLが表示されます。カレンダーアプリの「URLで追加」にそのURLを指定すると、同じURLで年度更新を受け取れます。
 
 トップページでは、東御市の現地日付（日本時間）で今日・明日・明後日の予定を確認できます。選択した地区はブラウザに保存されます。トップページの文言は `site/calendar.js` の言語別辞書で管理し、地区名と品目は年度別JSONの表記を使用します。

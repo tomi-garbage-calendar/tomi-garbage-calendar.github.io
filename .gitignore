@@ -17,6 +17,7 @@
 !/scripts/build.py
 !/scripts/extract.py
 !/scripts/generate_ics.py
+!/scripts/normalize_items.py
 !/scripts/pipeline.py
 
 !/site/
@@ -24,6 +25,8 @@
 !/site/calendar.js
 !/site/collection-icons.json
 !/site/collection-icons.svg
+!/site/collection-location.css
+!/site/collection-location.js
 !/site/index.html
 
 # Approved fiscal-year data is versioned. Candidates and build output are ignored.

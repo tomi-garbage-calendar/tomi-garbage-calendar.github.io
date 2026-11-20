@@ -86,10 +86,26 @@
       <path d="M13 3h6v5h-6Zm0 5-4 5v11c0 3 2 5 4 3 2 2 4 2 6 0 2 2 4 0 4-3V13l-4-5M9 14h14M9 20h14m-11-3h8"/>
     </g>
   </symbol>
-  <symbol id="paper-clothes" viewBox="0 0 32 32">
+  <symbol id="paper" viewBox="0 0 32 32">
     <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 5h9l4 4v15H3Zm9 0v5h4M6 13h6m-6 4h6m-6 4h4"/>
-      <path d="m16 15 5-3c0 4 5 4 5 0l5 3-2 5-2-1v8h-7v-8l-2 1-2-5Z"/>
+      <path d="M7 4h17v19H7zM4 8v19h17M11 9h9m-9 5h9m-9 5h6"/>
+    </g>
+  </symbol>
+  <symbol id="clothes" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m3 10 8-5c1 5 9 5 10 0l8 5-3 7-4-2v12H10V15l-4 2Z"/>
+    </g>
+  </symbol>
+  <symbol id="foam" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 18v3l5 5h15l6-5v-3M3 18l5-5h15l6 5-6 5H8Z"/>
+      <path d="M8 18l2-2h11l3 2-3 2H10Z M9 9l6-5 7 3-6 5Z M16 12l6-5v3l-4 3"/>
+    </g>
+  </symbol>
+  <symbol id="hazardous" viewBox="0 0 32 32">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 11h8v16H5zM7 11V7h4v4m-4 10h4m-2-2v4M23 7l7 15H16Z"/>
+      <path d="M23 12v4m0 3h.1"/>
     </g>
   </symbol>
   <symbol id="metal-ceramics" viewBox="0 0 32 32">

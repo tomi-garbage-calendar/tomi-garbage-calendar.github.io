@@ -37,7 +37,7 @@ button { min-height: 3.25rem; cursor: pointer; }
 .result h2 { font-size: 1.15rem; margin: 0 0 .6rem; }
 .result p { margin: 0; font-size: 1.08rem; }
 .result ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
-.result li { display: flex; align-items: center; gap: .6rem; padding: .65rem .8rem; background: var(--item-background); font-size: 1.25rem; font-weight: 700; overflow-wrap: anywhere; }
+.result li, .annual .collection-item { display: flex; align-items: center; gap: .6rem; padding: .65rem .8rem; background: var(--item-background); font-size: 1.25rem; font-weight: 700; overflow-wrap: anywhere; }
 .collection-icon { flex: none; width: 2rem; height: 2rem; }
 #retry { margin-top: 1rem; padding-inline: 1rem; }
 nav { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-top: .75rem; }
@@ -45,3 +45,27 @@ a { color: inherit; text-underline-offset: .18em; }
 nav a, footer a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 footer { margin-top: 2.25rem; border-top: 1px solid var(--section-border); padding-top: .75rem; }
 footer p { margin: 0; }
+
+.annual header nav { margin: 0 0 .7rem; }
+.annual .annual-links ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 0; padding: 0; list-style: none; }
+.annual-calendar { display: grid; grid-template-columns: minmax(0, 1fr) 2.25rem; gap: .5rem; align-items: start; }
+.annual-months { grid-area: 1 / 1; display: grid; gap: 1rem; }
+.month-index { grid-area: 1 / 2; position: sticky; top: .5rem; margin: 0; }
+.month-index ol { width: 100%; max-height: calc(100dvh - 1rem); overflow-y: auto; margin: 0; padding: .125rem; list-style: none; border: 1px solid var(--section-border); border-radius: .5rem; background: var(--page-background); }
+.month-index li + li::before { content: ""; display: block; width: .1875rem; height: .1875rem; margin: 0 auto; border-radius: 50%; background: var(--control-border); }
+.month-index a { display: grid; place-items: center; min-height: clamp(1.625rem, 5dvh, 2.25rem); font-size: .875rem; font-variant-numeric: tabular-nums; text-decoration: none; border-radius: .25rem; }
+.month-index a:is(:hover, :focus-visible) { background: var(--item-background); outline-offset: -2px; }
+.annual-month { scroll-margin-top: .25rem; }
+.annual-month h3 { position: sticky; top: 0; z-index: 1; margin: 0 0 .25rem; padding: .5rem 0; background: var(--page-background); border-bottom: 1px solid var(--section-border); font-size: 1.15rem; }
+.annual-month table { width: 100%; border-collapse: collapse; }
+.annual-month th, .annual-month td { padding: .55rem 0; text-align: left; vertical-align: top; }
+.annual-month th:first-child { padding-right: .65rem; }
+.annual-month th[scope="row"] { width: 1%; white-space: nowrap; }
+.annual-month tbody tr { border-top: 1px solid var(--section-border); }
+.annual .collection-item + .collection-item { margin-top: .4rem; }
+
+@media (max-width: 28rem) {
+  .annual-month { padding: .65rem; }
+  .annual .collection-item { gap: .35rem; padding: .5rem; font-size: 1rem; }
+  .annual .collection-icon { width: 1.5rem; height: 1.5rem; }
+}

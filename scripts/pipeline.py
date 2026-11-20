@@ -11,6 +11,7 @@ from urllib.parse import urljoin, urlsplit
 from urllib.request import urlopen
 
 from extract import DISTRICTS, ITEMS, extract_pdf, normalize
+from normalize_items import normalize_extraction
 
 
 OFFICIAL = "https://www.city.tomi.nagano.jp/category/gomi/150910.html"
@@ -195,8 +196,7 @@ def write_review_html(path, report):
 
 
 def analyze(year, sources, old, cache, report):
-    revision = digest((Path(__file__).with_name("extract.py").read_bytes()
-                       + Path(__file__).read_bytes()))
+    revision = digest(Path(__file__).with_name("extract.py").read_bytes())
     audit = {}
     all_events = set()
     issues = []
@@ -207,18 +207,23 @@ def analyze(year, sources, old, cache, report):
                               if e["district"] in DISTRICTS[edition])
             audit[edition] = {"source": source, "pages": [], "reused_approved": True}
             continue
+        filename = f"{year}-{edition}-extraction.json"
         path = cache / "results" / f"{revision}-{year}-{edition}-{sha}.json"
         if path.exists():
-            result = read(path)
+            extraction = {**read(path), "source": source}
         else:
             try:
-                events, pages, warnings = extract_pdf(cache / "pdf" / f"{sha}.pdf", year, edition)
-                result = {"events": sorted(events), "pages": pages, "issues": warnings}
+                pages = extract_pdf(cache / "pdf" / f"{sha}.pdf", year)
             except (ValueError, RuntimeError) as exc:
-                result = {"events": [], "pages": [], "issues": [str(exc)]}
-            write(path, result)
+                issues.append(f"{edition}: {exc}")
+                audit[edition] = {"source": source, "pages": []}
+                continue
+            extraction = {"fiscal_year": year, "edition": edition, "source": source, "pages": pages}
+            write(path, extraction)
+        write(report / filename, extraction)
+        result = normalize_extraction(extraction)
         all_events.update(tuple(event) for event in result["events"])
-        audit[edition] = {"source": source, "pages": result["pages"]}
+        audit[edition] = {"source": source, "pages": extraction["pages"]}
         issues.extend(f"{edition}: {issue}" for issue in result["issues"])
     data = {"schema_version": 1, "fiscal_year": year, "districts": AREAS, "sources": sources,
             "events": [{"district": area, "date": day, "item": item}
@@ -244,7 +249,7 @@ def analyze(year, sources, old, cache, report):
 def check(cache, report):
     approved = load_approved()
     report.mkdir(parents=True, exist_ok=True)
-    for pattern in ("*-candidate.json", "*-report.json", "*-report.html"):
+    for pattern in ("*-candidate.json", "*-report.json", "*-report.html", "*-extraction.json"):
         for stale in report.glob(pattern):
             stale.unlink()
     summary = ["# 東御市公式PDF 更新確認", ""]
@@ -289,11 +294,16 @@ if __name__ == "__main__":
     approver = commands.add_parser("approve")
     approver.add_argument("candidate", type=Path)
     approver.add_argument("sha256")
+    normalizer = commands.add_parser("normalize")
+    normalizer.add_argument("extraction", type=Path)
+    normalizer.add_argument("output", type=Path)
     commands.add_parser("verify-publication")
     args = parser.parse_args()
     if args.command == "check":
         check(args.cache, args.report)
     elif args.command == "approve":
         approve(args.candidate, args.sha256)
+    elif args.command == "normalize":
+        write(args.output, normalize_extraction(read(args.extraction)))
     else:
         verify_publication()
