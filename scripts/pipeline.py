@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 APPROVED = ROOT / "data" / "approved"
 TITLES = {
     "田中地区（常田区・田中区を除く）、滋野地区": "tanaka-shigeno",
-    "常田区・田中区、祢津地区、和地区": "tanaka-ne-tsu-wa",
+    "常田区・田中区、祢津地区、和地区": "tanaka-ne-tsu-kanou",
     "北御牧地区": "kitamimaki",
 }
 AREAS = {key: name for edition in DISTRICTS.values() for key, name in edition.items()}

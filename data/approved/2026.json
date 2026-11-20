@@ -6,7 +6,7 @@
     "shigeno": "滋野地区",
     "tanaka": "田中地区（常田区・田中区を除く）",
     "tokida-tanaka": "常田区・田中区",
-    "wa": "和地区"
+    "kanou": "和地区"
   },
   "events": [
     {
@@ -11651,1897 +11651,1897 @@
     },
     {
       "date": "2026-04-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-04-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-04-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-04-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-04-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-04-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-04-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-04-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-04-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-04-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-04-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-04-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-04-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-04-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-04-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-04-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-04-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-05-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-05-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-05-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-05-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-05-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-05-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-05-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-05-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-05-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-05-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-05-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "有害ごみ"
     },
     {
       "date": "2026-05-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-05-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-05-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-05-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-05-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-05-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-06-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-06-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-06-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-06-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-06-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-06-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-06-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-06-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-06-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-06-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-06-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-06-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-06-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-06-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-06-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-06-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-06-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-07-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-07-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-07-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-07-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-07-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-07-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-07-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-07-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-07-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-07-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-07-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-07-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-07-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-07-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-07-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-07-31",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-08-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-08-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-08-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-08-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-08-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-08-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-08-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-08-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-08-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-08-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-08-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-08-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-08-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-08-31",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-08-31",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-08-31",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-09-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-09-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-09-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-09-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-09-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-09-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-09-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-09-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-09-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-09-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-09-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-09-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-09-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-09-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-09-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-09-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-10-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-10-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-10-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-10-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-10-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-10-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-10-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-10-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-10-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-10-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-10-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-10-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-10-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-10-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-10-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-10-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-10-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-11-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-11-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-11-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-11-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-11-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-11-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-11-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-11-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-13",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-11-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-11-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-11-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "有害ごみ"
     },
     {
       "date": "2026-11-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-20",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-11-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2026-11-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-11-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-11-27",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-11-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-11-30",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-12-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2026-12-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-03",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2026-12-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2026-12-06",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2026-12-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2026-12-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-12-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2026-12-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2026-12-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2026-12-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-17",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-12-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2026-12-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-24",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2026-12-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2026-12-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2026-12-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2027-01-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-01-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2027-01-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-01-10",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2027-01-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2027-01-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2027-01-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-14",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2027-01-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2027-01-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-01-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2027-01-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-21",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-01-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2027-01-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2027-01-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-01-28",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-01-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-02-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-02-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2027-02-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2027-02-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2027-02-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2027-02-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2027-02-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2027-02-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-02-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-02-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2027-02-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-02-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2027-02-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2027-02-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-02-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-02-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-03-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-01",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-03-02",
-      "district": "wa",
+      "district": "kanou",
       "item": "茶色びん"
     },
     {
       "date": "2027-03-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-04",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装以外プラ"
     },
     {
       "date": "2027-03-05",
-      "district": "wa",
+      "district": "kanou",
       "item": "汚れ容器包装プラ"
     },
     {
       "date": "2027-03-07",
-      "district": "wa",
+      "district": "kanou",
       "item": "クリーンセンター休日受入"
     },
     {
       "date": "2027-03-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-08",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（ペット等）"
     },
     {
       "date": "2027-03-09",
-      "district": "wa",
+      "district": "kanou",
       "item": "無色びん"
     },
     {
       "date": "2027-03-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-11",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-12",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-03-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-15",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "カン"
     },
     {
       "date": "2027-03-16",
-      "district": "wa",
+      "district": "kanou",
       "item": "他色びん"
     },
     {
       "date": "2027-03-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-18",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-19",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-03-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-22",
-      "district": "wa",
+      "district": "kanou",
       "item": "資源回収（新聞等）"
     },
     {
       "date": "2027-03-23",
-      "district": "wa",
+      "district": "kanou",
       "item": "金物・陶器等"
     },
     {
       "date": "2027-03-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-25",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     },
     {
       "date": "2027-03-26",
-      "district": "wa",
+      "district": "kanou",
       "item": "容器包装プラ"
     },
     {
       "date": "2027-03-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "もやせるごみ"
     },
     {
       "date": "2027-03-29",
-      "district": "wa",
+      "district": "kanou",
       "item": "生ごみ"
     }
   ],
@@ -13552,7 +13552,7 @@
       "sha256": "5c30fd9e47a38e3d5cc7927de6c52eec7126c7665fd9d218af9f183e9266d0c3",
       "url": "https://www.city.tomi.nagano.jp/file/183151.pdf"
     },
-    "tanaka-ne-tsu-wa": {
+    "tanaka-ne-tsu-kanou": {
       "sha256": "40a954b51f7fbcfe23952a3b5b0ab37d96d769181b86f63f2446d72a1a917076",
       "url": "https://www.city.tomi.nagano.jp/file/183150.pdf"
     },

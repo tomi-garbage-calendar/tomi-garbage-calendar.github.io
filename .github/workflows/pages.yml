@@ -73,7 +73,7 @@ jobs:
         run: |
           {
             echo '## 地区別ICS'
-            for district in tanaka shigeno tokida-tanaka netsu wa kitamimaki-east kitamimaki-west; do
+            for district in tanaka shigeno tokida-tanaka netsu kanou kitamimaki-east kitamimaki-west; do
               printf -- '- [%s](%s/%s.ics)\n' "$district" "${PAGES_URL%/}" "$district"
             done
           } >> "$GITHUB_STEP_SUMMARY"

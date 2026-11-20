@@ -9,8 +9,8 @@ DISTRICTS = {
     "tanaka-shigeno": {
         "tanaka": "田中地区（常田区・田中区を除く）", "shigeno": "滋野地区",
     },
-    "tanaka-ne-tsu-wa": {
-        "tokida-tanaka": "常田区・田中区", "netsu": "祢津地区", "wa": "和地区",
+    "tanaka-ne-tsu-kanou": {
+        "tokida-tanaka": "常田区・田中区", "netsu": "祢津地区", "kanou": "和地区",
     },
     "kitamimaki": {
         "kitamimaki-east": "八重原・羽毛山・大日向地区",
@@ -19,7 +19,7 @@ DISTRICTS = {
 }
 RESOURCE_DISTRICTS = {
     "田中": ("tanaka", "tokida-tanaka"), "滋野": ("shigeno",),
-    "祢津": ("netsu",), "和": ("wa",),
+    "祢津": ("netsu",), "和": ("kanou",),
 }
 ITEMS = set("""
 もやせるごみ 生ごみ 容器包装プラ 汚れ容器包装プラ 容器包装以外プラ 茶色びん 無色びん
