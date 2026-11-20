@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000" media="(prefers-color-scheme: dark)">
-  <title>東御市ごみ出しカレンダー</title>
+  <!-- page-metadata -->
   <link rel="stylesheet" href="calendar.css">
   <link rel="stylesheet" href="collection-location.css">
   <script type="module" src="calendar.js"></script>
@@ -28,16 +28,17 @@
       <button type="button" data-day="2" data-text="dayAfter" aria-pressed="false">明後日</button>
     </div>
     <section class="result" aria-live="polite" aria-atomic="true">
-      <h2><time id="date"></time></h2>
+      <h2><time id="date"></time><noscript>収集予定</noscript></h2>
       <p id="status" data-text="loading">読み込み中…</p>
       <ul id="items" hidden></ul>
     </section>
     <button type="button" id="retry" data-text="retry" hidden>もう一度読み込む</button>
     <nav id="district-links" aria-label="地区のカレンダー" hidden>
-      <a id="calendar-link" data-text="fullCalendar">年間の収集予定</a>
-      <a id="ics-link" data-text="ics">ICSで購読</a>
+      <a id="calendar-link" data-text="fullCalendar">>年間の収集予定</a>
+      <a id="ics-link" data-text="ics">>カレンダーに登録する</a>
     </nav>
-    <noscript>収集予定を表示するにはJavaScriptを有効にしてください。</noscript>
+    <noscript><p>JavaScriptを使わずに確認する場合は、以下の地区別の年間収集予定をご覧ください。</p></noscript>
+    <!-- static-links -->
   </main>
   <footer>
     <p data-text="unofficial">このサイトは東御市の非公式サイトです。情報は間違っている場合があります。</p>

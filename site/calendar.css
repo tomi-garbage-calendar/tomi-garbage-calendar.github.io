@@ -46,6 +46,9 @@ nav a, footer a { display: inline-flex; align-items: center; min-height: 2.75rem
 footer { margin-top: 2.25rem; border-top: 1px solid var(--section-border); padding-top: .75rem; }
 footer p { margin: 0; }
 
+.district-directory { margin-top: 1rem; }
+.district-directory summary { cursor: pointer; }
+
 .annual header nav { margin: 0 0 .7rem; }
 .annual .annual-links ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 0; padding: 0; list-style: none; }
 .annual-calendar { display: grid; grid-template-columns: minmax(0, 1fr) 2.25rem; gap: .5rem; align-items: start; }

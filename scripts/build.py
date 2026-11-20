@@ -5,25 +5,68 @@ from datetime import date
 from html import escape
 from pathlib import Path
 from shutil import copyfile
+from xml.etree.ElementTree import Element, SubElement, tostring
 
 from generate_ics import generate
 from normalize_items import LOCATION_NAMES, publication_data
-from pipeline import AREAS, OFFICIAL, load_approved, write
+from pipeline import AREAS, load_approved, write
 
 SITE = Path(__file__).resolve().parents[1] / "site"
+SITE_URL = "https://tomi-garbage-calendar.github.io/"
+SITE_NAME = "東御市ごみ出しカレンダー（非公式）"
 
 
-def page(title, content):
-    return (f'<!doctype html><html lang="ja"><head><meta charset="utf-8">'
+def page_metadata(path, title, description, page_type, **properties):
+    url = SITE_URL + path
+    fields = {"title": title, "description": description, "type": "website",
+              "url": url, "site_name": SITE_NAME, "locale": "ja_JP", "image": SITE_URL + "og-calendar.png",
+              "image:width": "1200", "image:height": "630", "image:alt": SITE_NAME}
+    schema = {"@context": "https://schema.org", "@type": page_type, "url": url, "name": title,
+              "description": description, "inLanguage": "ja", **properties}
+    structured = json.dumps(schema, ensure_ascii=False).replace("<", "\\u003c")
+    return "\n".join([
+        f'<title>{escape(title)}</title>',
+        f'<meta name="description" content="{escape(description)}">',
+        f'<link rel="canonical" href="{escape(url)}">',
+        *(f'<meta property="og:{key}" content="{escape(value)}">' for key, value in fields.items()),
+        f'<script type="application/ld+json">{structured}</script>',
+    ])
+
+
+def district_list(areas):
+    return "<ul>" + "".join(f'<li><a href="{area}.html">{escape(AREAS[area])}の収集日</a></li>'
+                              for area in areas) + "</ul>"
+
+
+def annual_page(metadata, content):
+    template = (SITE / "index.html").read_text(encoding="utf-8")
+    footer = template.split("<footer>", 1)[1].split("</footer>", 1)[0]
+    return ('<!doctype html><html lang="ja" prefix="og: https://ogp.me/ns#"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             '<meta name="theme-color" content="#fff" media="(prefers-color-scheme: light)">'
             '<meta name="theme-color" content="#000" media="(prefers-color-scheme: dark)">'
-            f'<title>{escape(title)} | 東御市ごみ収集カレンダー</title>'
-            '<link rel="stylesheet" href="calendar.css">'
+            f'{metadata}<link rel="stylesheet" href="calendar.css">'
             '<link rel="stylesheet" href="collection-location.css">'
-            '<script type="module" src="collection-location.js"></script></head>'
-            f'<body><main class="annual">{content}</main><footer><p>非公式のカレンダーです。</p>'
-            f'<a href="{OFFICIAL}">東御市公式のごみ出しカレンダー</a></footer></body></html>')
+            '<script type="module" src="collection-location.js"></script>'
+            f'</head><body><main class="annual">{content}</main><footer>{footer}</footer></body></html>')
+
+
+def home_page(areas):
+    title = SITE_NAME
+    description = "長野県東御市の非公式ごみカレンダー。地区を選んで今日・明日・明後日や年間のごみ収集日、品目、出す場所を確認できます。"
+    metadata = page_metadata("", title, description, "WebSite", alternateName="東御市ごみカレンダー")
+    links = ('<details class="district-directory"><summary>地区別の年間収集予定</summary>'
+             f'{district_list(areas)}</details>')
+    template = (SITE / "index.html").read_text(encoding="utf-8")
+    return template.replace("<!-- page-metadata -->", metadata).replace("<!-- static-links -->", links)
+
+
+def write_crawl_files(out, paths):
+    sitemap = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    for path in paths:
+        SubElement(SubElement(sitemap, "url"), "loc").text = SITE_URL + path
+    (out / "sitemap.xml").write_bytes(tostring(sitemap, encoding="utf-8", xml_declaration=True))
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
 
 
 def collection_item(item, item_id, location_type, item_icons):
@@ -42,8 +85,8 @@ def district_page(area, years, schedule, item_icons):
     title = AREAS[area]
     navigation = "".join(f'<li><a href="#fy-{year}">{year}年度</a></li>' for year in years)
     parts = ['<header><nav aria-label="カレンダー">'
-             '<a href="index.html">今日・明日・明後日</a></nav>'
-             f'<h1>{escape(title)}</h1></header>',
+             '<a href="./"><前のページに戻る</a></nav>'
+             f'<h1>{escape(title)}のごみ収集日</h1></header>',
              f'<nav class="annual-links" aria-label="年間予定">'
              f'<a href="{area}.ics">全年度のカレンダー（ICS）</a><ul>{navigation}</ul></nav>']
     for year in years:
@@ -80,7 +123,11 @@ def district_page(area, years, schedule, item_icons):
                              f'<td>{item_labels}</td></tr>')
             parts.append("</tbody></table></section>")
         parts.append("</div></div></section>")
-    return page(title, "".join(parts))
+    description = (f"東御市の{title}の{max(years)}年度のごみ収集日を、月別の日付・品目・出す場所で確認できます。"
+                   "年間予定のICS購読にも対応した非公式カレンダーです。")
+    metadata = page_metadata(f"{area}.html", f"{title}のごみ収集日 | {SITE_NAME}", description, "CollectionPage",
+                             isPartOf={"@type": "WebSite", "url": SITE_URL, "name": SITE_NAME})
+    return annual_page(metadata, "".join(parts))
 
 
 def build(out):
@@ -95,15 +142,20 @@ def build(out):
         write(out / "data" / f"{year}.json", data)
     generate(years, out)
     for area in AREAS:
+        for year, data in years.items():
+            write(out / "data" / str(year) / f"{area}.json",
+                  {"events": [event for event in data["events"] if event["district"] == area]})
         schedule = {year: [(e["date"], e["item"], e["item_id"], e["location_type"]) for e in data["events"]
                            if e["district"] == area]
                     for year, data in years.items()}
         (out / f"{area}.html").write_text(
             district_page(area, sorted(years, reverse=True), schedule, item_icons), encoding="utf-8")
-    write(out / "data" / "index.json", {"districts": AREAS, "years": sorted(years),
+    write(out / "data" / "index.json", {"districts": AREAS, "years": sorted(years), "districtFiles": True,
                                       "itemIcons": item_icons, "locationNames": LOCATION_NAMES})
-    for filename in ("index.html", "calendar.css", "calendar.js", "collection-icons.svg",
-                     "collection-location.css", "collection-location.js"):
+    (out / "index.html").write_text(home_page(AREAS), encoding="utf-8")
+    write_crawl_files(out, ["", *(f"{area}.html" for area in AREAS)])
+    for filename in ("calendar.css", "calendar.js", "collection-icons.svg",
+                     "collection-location.css", "collection-location.js", "og-calendar.png"):
         copyfile(SITE / filename, out / filename)
     (out / ".nojekyll").touch()
 

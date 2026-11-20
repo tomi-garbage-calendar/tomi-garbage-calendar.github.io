@@ -28,6 +28,7 @@
 !/site/collection-location.css
 !/site/collection-location.js
 !/site/index.html
+!/site/og-calendar.png
 
 # Approved fiscal-year data is versioned. Candidates and build output are ignored.
 !/data/

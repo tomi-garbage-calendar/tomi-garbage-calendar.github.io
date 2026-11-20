@@ -73,14 +73,15 @@ function setStatus(key) {
   retry.hidden = key !== "error";
 }
 
-function calendarFor(year) {
-  if (!calendars.has(year)) {
-    calendars.set(year, readJson(`data/${year}.json`).catch((error) => {
-      calendars.delete(year);
+function calendarFor(year, area) {
+  const url = manifest.districtFiles ? `data/${year}/${area}.json` : `data/${year}.json`;
+  if (!calendars.has(url)) {
+    calendars.set(url, readJson(url).catch((error) => {
+      calendars.delete(url);
       throw error;
     }));
   }
-  return calendars.get(year);
+  return calendars.get(url);
 }
 
 async function render() {
@@ -113,7 +114,7 @@ async function render() {
   }
   setStatus("loading");
   try {
-    const calendar = await calendarFor(year);
+    const calendar = await calendarFor(year, area);
     if (version !== renderVersion) return;
     const events = calendar.events.filter((event) => event.district === area && event.date === day);
     for (const event of events) {
