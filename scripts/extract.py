@@ -61,8 +61,8 @@ def extract_pdf(path, year):
     with pymupdf.open(path) as document:
         if len(document) != 6:
             raise ValueError("2か月×6ページの版面に対応しています")
-        for index, page in enumerate(document):
-            audit.append(extract_page(page, year, index))
+        for index in range(len(document)):
+            audit.append(extract_page(document.load_page(index), year, index))
     return audit
 
 
@@ -122,7 +122,7 @@ def extract_page(page, year, index):
                 rect = pymupdf.Rect(left, y - 4, left + 135.6, bottom)
                 iso = date(civil_year, month, day).isoformat()
                 evidence = extract_cell(page, rect, text, placed_images, filled)
-                cells.append({"date": iso, "bbox": list(rect), **evidence})
+                cells.append({"date": iso, "bbox": [rect.x0, rect.y0, rect.x1, rect.y1], **evidence})
     return {"page": index + 1, "drawings": len(drawings), "images": len(images),
             "cells": sorted(cells, key=lambda cell: cell["date"])}
 
