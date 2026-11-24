@@ -155,6 +155,7 @@ def build(out):
     (out / "index.html").write_text(home_page(AREAS), encoding="utf-8")
     write_crawl_files(out, ["", *(f"{area}.html" for area in AREAS)])
     for filename in ("calendar.css", "calendar.js", "collection-icons.svg",
+                     "google2ffc0f67c84a72b7.html",
                      "collection-location.css", "collection-location.js", "og-calendar.png"):
         copyfile(SITE / filename, out / filename)
     (out / ".nojekyll").touch()
