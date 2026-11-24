@@ -9,7 +9,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 
 from generate_ics import generate
 from normalize_items import LOCATION_NAMES, publication_data
-from pipeline import AREAS, load_approved, write
+from pipeline import AREAS, OFFICIAL, load_approved, write
 
 SITE = Path(__file__).resolve().parents[1] / "site"
 SITE_URL = "https://tomi-garbage-calendar.github.io/"
@@ -66,7 +66,56 @@ def write_crawl_files(out, paths):
     for path in paths:
         SubElement(SubElement(sitemap, "url"), "loc").text = SITE_URL + path
     (out / "sitemap.xml").write_bytes(tostring(sitemap, encoding="utf-8", xml_declaration=True))
-    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+    (out / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n"
+        "\n# AI向けのサイト案内と収集予定\n"
+        f"# {SITE_URL}llms.txt\n# {SITE_URL}llms-full.txt\n", encoding="utf-8")
+
+
+def write_llms_files(out, years):
+    intro = [
+        f"# {SITE_NAME}",
+        "",
+        "> 長野県東御市の地区別ごみ収集予定を提供する非公式サイトです。",
+        "",
+        "確認済みの市民カレンダーをもとにしています。対象年度、地区、日付を確認してください。",
+        "収集品目や場所の詳細は東御市の公式資料と地区の案内を確認してください。",
+        "",
+    ]
+    links = ["## 地区別の年間収集予定", ""]
+    for area, name in AREAS.items():
+        links.append(f"- [{name}]({SITE_URL}{area}.html)")
+    links.extend([
+        "",
+        "## データと出典",
+        "",
+        f"- [全地区の収集予定（テキスト）]({SITE_URL}llms-full.txt)",
+        f"- [公開年度と地区一覧（JSON）]({SITE_URL}data/index.json)",
+        f"- [東御市公式のごみ出しカレンダー]({OFFICIAL})",
+    ])
+    for year in sorted(years, reverse=True):
+        links.append(f"- [{year}年度の収集予定（JSON）]({SITE_URL}data/{year}.json)")
+    (out / "llms.txt").write_text("\n".join([*intro, *links]) + "\n", encoding="utf-8")
+
+    full = [*intro, "収集場所は品目ごとに表示しています。クリーンセンター休日受入は施設の受入予定です。", ""]
+    for year, data in sorted(years.items(), reverse=True):
+        full.extend([f"## {year}年度", "", f"- [公開データ]({SITE_URL}data/{year}.json)"])
+        for source in data["sources"].values():
+            full.append(f"- [市民カレンダーの出典PDF]({source['url']})")
+        for area, name in AREAS.items():
+            full.extend(["", f"### {name}", "", f"[地区別の年間予定]({SITE_URL}{area}.html)", ""])
+            days = defaultdict(list)
+            for event in data["events"]:
+                if event["district"] != area:
+                    continue
+                label = event["item"]
+                if event["collection_type"] != "clean-center":
+                    label += f"（{LOCATION_NAMES[event['location_type']]}）"
+                if label not in days[event["date"]]:
+                    days[event["date"]].append(label)
+            for day, items in sorted(days.items()):
+                full.append(f"- {day} {'、'.join(items)}")
+    (out / "llms-full.txt").write_text("\n".join(full) + "\n", encoding="utf-8")
 
 
 def collection_item(item, item_id, location_type, item_icons):
@@ -154,6 +203,7 @@ def build(out):
                                       "itemIcons": item_icons, "locationNames": LOCATION_NAMES})
     (out / "index.html").write_text(home_page(AREAS), encoding="utf-8")
     write_crawl_files(out, ["", *(f"{area}.html" for area in AREAS)])
+    write_llms_files(out, years)
     for filename in ("calendar.css", "calendar.js", "collection-icons.svg",
                      "google2ffc0f67c84a72b7.html",
                      "collection-location.css", "collection-location.js", "og-calendar.png"):
